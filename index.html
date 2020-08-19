@@ -1,6 +1,7 @@
 <!doctype html>
 <head>
     <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-base.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
       anychart.onDocumentLoad(function () {
         // create an instance of a pie chart
@@ -14,15 +15,94 @@
           ["Buttermilk", 1]
         ]);
         // set chart title
-        chart.title("Top 5 pancake fillings");
+        chart.title("Temperatura °C");
         // set the container element 
         chart.container("container");
         // initiate chart display
         chart.draw();
       });
+
+      anychart.onDocumentLoad(function () {
+      // create an instance of a pie chart
+      var chart2 = anychart.line();
+      // set the data
+      chart2.data([
+        ["asdasd", 5],
+        ["Rasdasd", 2],
+        ["Crêpe Suzette", 2],
+        ["asdd fsddf", 2],
+        ["dfgdfg", 1]
+      ]);
+      // set chart title
+      chart2.title("Humidade");
+      // set the container element 
+      chart2.container("container2");
+      // initiate chart display
+      chart2.draw();
+    });
+
+   // var teste = jQuery;
+   // teste.getJSON('http://projetodoalisson.serverdo.in:42069/1', function(data) {
+    // JSON result in `data` variable
+//});
+
+function getJSONP(url, success) {
+
+var ud = '_' + +new Date,
+    script = document.createElement('script'),
+    head = document.getElementsByTagName('head')[0] 
+           || document.documentElement;
+
+window[ud] = function(data) {
+    head.removeChild(script);
+    success && success(data);
+};
+
+script.src = url.replace('callback=?', 'callback=' + ud);
+head.appendChild(script);
+
+}
+var a;
+anychart.onDocumentLoad(function () {
+getJSONP('http://projetodoalisson.serverdo.in:42069/1', function(data){
+    print(data);
+});  
+
+ // chart settings
+ var json = {
+  // chart settings
+  "chart": {
+    // chart type
+    "type": "pie",
+    // chart data
+    "data": [
+      {"x": "Apples", "value": "128.14", fill: "green"},
+      {"x": "Oranges", "value": "128.14", fill: "orange"},
+    ],
+    // chart container
+    "container": "container3"
+  }
+}
+
+    var chart3 = anychart.fromJson(json);
+
+// draw chart
+chart3.draw();
+});
+
+
+
+    
+
+
     </script>
+
+
+
 </head>
 <body>
     <div id="container" style="width: 500px; height: 400px;"></div>
+    <div id="container2" style="width: 500px; height: 400px;"></div>
+    <div id="container3" style="width: 500px; height: 400px;"></div>
 </body>
 </html>
