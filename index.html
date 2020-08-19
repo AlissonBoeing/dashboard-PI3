@@ -8,6 +8,7 @@
         <body>
                 <div id="container">
                         <script>
+                            anychart.onDocumentLoad{ function ()
                                 // set chart type
                                 var chart = anychart.line();
 
@@ -20,10 +21,11 @@
               ['March', 18000],
               ['April', 11000],
               ['May', 9000]
-            ]);
+                              ]);
 
 // set chart container
 chart.container('container');
+char.draw() };
                         </script>
                 </div>
 
